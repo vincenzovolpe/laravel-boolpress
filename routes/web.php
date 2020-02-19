@@ -15,10 +15,10 @@ Route::get('/', 'HomeController@index')->name('public.home');
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/blog/{slug}', 'PostController@show')->name('blog.show');
 
-// Genera tutte le rotte per la gestione dell'autenticazione
-Auth::routes();
+// Genera tutte le rotte per la gestione dell'autenticazione (abbiamo disattivato la registrazione che verrà gestita nell' area admin)
+Auth::routes(['register' => false]);
 
-
+// Specifichiamo un gruppo di route che condividono una serie di comandi,  come per esempio il fatto che possono essere visualizzati solo sesi è loggati
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/posts', 'PostController');

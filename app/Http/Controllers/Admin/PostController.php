@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller; // Devo aggiungere questo namespace per dirgli di usare il controller
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
 {
@@ -26,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +39,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dati = $request->all();
+        $post = new Post();
+        $post->fill($dati);
+
+        $post->slug = SlugService::createSlug(Post::class, 'slug', $dati['title']);
+
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -48,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post = Post::find($post->id);
+
         return view('admin.posts.show', ['post' => $post]);
     }
 
@@ -60,7 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -72,7 +82,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $dati = $request->all();
+        $post->update($dati);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -83,6 +95,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }

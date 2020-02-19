@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Sei dentro l'area amministrazione!
                 </div>
             </div>
         </div>
