@@ -71,7 +71,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 @forelse ($posts as $post)
-                                    <li class="list-group-item"><a href="{{route('blog.show', ['slug' => $post->slug])}}">{{$post->title}}</a></li>
+                                    <li class="list-group-item"><a href="{{ route('admin.posts.show', ['post' => $post->id ]) }}">{{$post->title}}</a></li>
                                 @empty
                                     <li>Non ci sono post</li>
                                 @endforelse

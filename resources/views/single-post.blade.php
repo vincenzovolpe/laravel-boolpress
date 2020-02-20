@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="post-title">{{ $post->title }}</h1>
+                <img class="col-md-4" src="{{ asset("images/$post->image")}}">
                 <div class="post-content">
                     {{ $post->content }}
                 </div>
