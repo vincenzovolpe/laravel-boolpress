@@ -20,6 +20,11 @@
                         <label for="content">Testo articolo</label>
                         <textarea class="form-control" id="content"  name="content" rows="8">{{ $post->content }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="vote">Voto articolo</label>
+                          <input type="text" name="vote" placeholder="Inserisci un voto per il prodotto da 0 a 5" value="{{$post->vote}}" class="form-control">
+                        </div>
+
                     <!-- File Immagine Frontale -->
                         <label for="filebutton">Immagine Post</label>
                         <div class="form-group">

@@ -19,6 +19,10 @@
                         <label for="content">Testo articolo</label>
                         <textarea class="form-control" id="content" placeholder="Inizia a scrivere un bellissimo articolo..." name="content" rows="8"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="vote">Voto articolo</label>
+                          <input id="product_vote" name="vote" placeholder="Inserisci un voto per il prodotto da 0 a 5" class="form-control input-md" type="text">
+                    </div>
                     <!-- File Immagine -->
                     <div class="form-group">
                         <label for="filebutton">Immagine Post</label>

@@ -10,7 +10,7 @@ class Post extends Model
 
     use Sluggable;
 
-    protected $fillable = ['title', 'author', 'content', 'slug', 'image'];
+    protected $fillable = ['title', 'author', 'content', 'slug', 'image', 'vote'];
 
     public function sluggable()
     {
