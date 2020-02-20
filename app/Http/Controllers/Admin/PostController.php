@@ -40,10 +40,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $dati = $request->all();
+
+        //Creazione nome immagini e copia nella cartella images
+        $file_image = time().'.'.$dati['image']->getClientOriginalName();
+        // Sposto i file nella cartella public/images
+        $request->image->move(public_path('images'), $file_image);
+
         $post = new Post();
-        $post->fill($dati);
 
         $post->slug = SlugService::createSlug(Post::class, 'slug', $dati['title']);
+
+        $post->fill($dati);
+
+        $post->image = $file_image;
 
         $post->save();
 
@@ -83,7 +92,22 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $dati = $request->all();
+
+        //Creazione nome immagini e copia nella cartella images
+        $file_image = time().'.'.$request->image->getClientOriginalName();
+
+        // Cancello i vecchi file dalla cartella images
+        if(\File::exists(public_path('images/'.$post->image))){
+            \File::delete(public_path('images/'.$post->image));
+        }
+
+        // Sposto i file nella cartella public/images
+        $request->image->move(public_path('images'), $file_image);
+
+        $dati['image'] = $file_image;
+
         $post->update($dati);
+
         return redirect()->route('admin.posts.index');
     }
 
