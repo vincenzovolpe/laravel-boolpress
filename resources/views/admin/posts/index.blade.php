@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="float-left">Pagina Gestione post</h1>
+                <h1 class="float-left">Pagina Gestione Post</h1>
                 <a class="btn btn-success float-right" href="{{ route('admin.posts.create') }}">
                     Crea nuovo post
                 </a>

@@ -9,10 +9,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{Route::currentRouteName() == 'admin.posts.index' ? 'active' : ""}}" href="{{ route('admin.posts.index') }}">Gestione Post</a>
-                </li>
+            <ul class="navbar-nav ml-auto">
+                @auth
+                    <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link {{Route::currentRouteName() == 'admin.home' ? 'active' : ""}}" href="{{ route('admin.home') }}">Dashboard</a>
+                        </li>
+                        <a class="nav-link {{Route::currentRouteName() == 'admin.posts.index' ? 'active' : ""}}" href="{{ route('admin.posts.index') }}">Gestione Post</a>
+                    </li>
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
