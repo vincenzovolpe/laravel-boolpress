@@ -121,6 +121,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // Cancello i vecchi file dalla cartella images
+        if(\File::exists(public_path('images/'.$post->image))){
+            \File::delete(public_path('images/'.$post->image));
+        }
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
