@@ -42,6 +42,7 @@ class PostController extends Controller
         $dati = $request->all();
 
         //Creazione nome immagini e copia nella cartella images
+
         $file_image = time().'.'.$dati['image']->getClientOriginalName();
         // Sposto i file nella cartella public/images
         $request->image->move(public_path('images'), $file_image);
@@ -94,6 +95,7 @@ class PostController extends Controller
         $dati = $request->all();
 
         //Creazione nome immagini e copia nella cartella images
+
         $file_image = time().'.'.$request->image->getClientOriginalName();
 
         // Cancello i vecchi file dalla cartella images
