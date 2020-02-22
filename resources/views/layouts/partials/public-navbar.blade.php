@@ -25,7 +25,7 @@
                     <a class="nav-link" href="#">Cosa facciamo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contatti</a>
+                    <a class="nav-link {{Route::currentRouteName() == 'contatti' ? 'active' : ""}}" href="{{ route('contatti.show') }}">Contatti</a>
                 </li>
                 @auth
                     <li class="nav-item dropdown">
