@@ -39,6 +39,7 @@
             @empty
                 <li>Non ci sono post</li>
             @endforelse
+            {{ $posts->links() }}
         </div>
         <!-- Card package -->
     </div>

@@ -9,6 +9,10 @@
                 <div class="post-content">
                     {{ $post->content }}
                 </div>
+                <br>
+                @if (!empty ($post->category))
+                    <p>Categoria: {{ $post->category->name }}</p>
+                @endif
                 <p>Autore: {{ $post->author }}</p>
                 <p>Slug: {{ $post->slug }}</p>
                 <p>Creato il: {{ $post->created_at }}</p>

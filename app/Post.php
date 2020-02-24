@@ -10,7 +10,7 @@ class Post extends Model
 
     use Sluggable;
 
-    protected $fillable = ['title', 'author', 'content', 'slug', 'image', 'vote'];
+    protected $fillable = ['title', 'author', 'content', 'slug', 'image', 'vote', 'category_id'];
 
     public function sluggable()
     {
@@ -22,7 +22,7 @@ class Post extends Model
     }
 
     public function category() {
-        // Una categoria ha tanti posts
-        $this->belongsTo('App\Category');
+        // Una categoria ha tanti posts; uso questa funzione per avere la categoria del post
+        return $this->belongsTo('App\Category');
     }
 }

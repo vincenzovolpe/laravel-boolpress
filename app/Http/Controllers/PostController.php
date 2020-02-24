@@ -9,7 +9,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        //$posts = Post::all();
+        // Uso la paginazione anzichè all
+        $posts = Post::paginate(15);
         return view('posts', ['posts' => $posts]);
     }
 
