@@ -20,4 +20,9 @@ class Post extends Model
             ]
         ];
     }
+
+    public function category() {
+        // Una categoria ha tanti posts
+        $this->belongsTo('App\Category');
+    }
 }
