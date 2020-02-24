@@ -11,7 +11,7 @@
                 </div>
                 <br>
                 @if (!empty ($post->category))
-                    <p>Categoria: {{ $post->category->name }}</p>
+                    <p>Categoria: <a href="{{route('blog.category', $post->category->slug)}}">{{ $post->category->name }}</a></p>
                 @endif
                 <p>Autore: {{ $post->author }}</p>
                 <p>Slug: {{ $post->slug }}</p>

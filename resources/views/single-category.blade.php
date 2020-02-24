@@ -3,14 +3,14 @@
 @section('content')
 <main class="py-4">
     <div class="container">
-        <h1>Lista di tutti post</h1>
             <!-- Card package -->
+        <h1>Lista di tutti post della categoria: {{$categoria->name}}</h1>
         <div class="card-columns">
             @forelse ($posts as $post)
                 <div class="card">
                     <img class="card-img" src="{{ asset("images/$post->image")}}" alt="">
                     <div class="card-img-overlay">
-                        <a href="#" class="btn btn-light btn-sm">{{ $post->category->name }}</a>
+                        <a href="#" class="btn btn-light btn-sm">{{ $categoria->name }}</a>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ $post->title }}</h4>
@@ -40,7 +40,6 @@
             @empty
                 <li>Non ci sono post</li>
             @endforelse
-            {{ $posts->links() }}
         </div>
         <!-- Card package -->
     </div>
