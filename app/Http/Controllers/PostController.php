@@ -19,7 +19,11 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('single-post', ['post' => $post]);
+        if(!empty($post)) {
+            return view('single-post', ['post' => $post]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function postCategoria($slug)
