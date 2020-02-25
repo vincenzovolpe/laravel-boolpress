@@ -33,7 +33,7 @@ class PostController extends Controller
 
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.posts.create',[
+        return view('admin.posts.create', [
             'categories' => $categories,
             'tags' => $tags
         ]);
@@ -47,7 +47,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // Recuoeri tutti i dati del form
+
+        $request->validate([
+           'title' => 'required|max:255',
+           'author' => 'required|max:255',
+           'content' => 'required',
+           'image' => 'image'
+        ]);
+
+        // Recupero tutti i dati del form
         $dati = $request->all();
 
         //Creazione nome immagini e copia nella cartella images
@@ -113,6 +121,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+        $request->validate([
+           'title' => 'required|max:255',
+           'author' => 'required|max:255',
+           'content' => 'required',
+           'image' => 'image'
+        ]);
+
         $dati = $request->all();
 
         //Creazione nome immagini e copia nella cartella images
