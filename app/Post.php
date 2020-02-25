@@ -25,4 +25,10 @@ class Post extends Model
         // Una categoria ha tanti posts; uso questa funzione per avere la categoria del post
         return $this->belongsTo('App\Category');
     }
+
+    public function tags() {
+        // Una categoria ha tanti posts
+        return $this->belongsToMany('App\Tag');
+    }
+
 }

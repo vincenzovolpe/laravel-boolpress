@@ -4,13 +4,13 @@
 <main class="py-4">
     <div class="container">
             <!-- Card package -->
-        <h1>Lista di tutti post della categoria: {{$categoria->name}}</h1>
+        <h1>Lista di tutti post con il tag: {{$tag->name}}</h1>
         <div class="card-columns">
             @forelse ($posts as $post)
                 <div class="card">
                     <img class="card-img" src="{{ asset("images/$post->image")}}" alt="">
                     <div class="card-img-overlay">
-                        <a href="#" class="btn btn-light btn-sm">{{ $categoria->name }}</a>
+                        <a href="#" class="btn btn-light btn-sm">{{ $post->category->name }}</a>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ $post->title }}</h4>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             @empty
-                <li>Non ci sono post con questa categoria</li>
+                <li>Non ci sono post con questo tag</li>
             @endforelse
         </div>
         <!-- Card package -->

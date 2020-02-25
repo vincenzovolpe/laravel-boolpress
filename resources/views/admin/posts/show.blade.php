@@ -13,6 +13,13 @@
                 @if (!empty ($post->category))
                     <p>Categoria: {{ $post->category->name }}</p>
                 @endif
+                @if(($post->tags)->isNotEmpty())
+                    <p>Tags:
+                        @foreach ($post->tags as $tag)
+                            {{ $tag->name }}{{ $loop->last ? '' : ',' }}
+                        @endforeach
+                    </p>
+                @endif
                 <p>Autore: {{ $post->author }}</p>
                 <p>Slug: {{ $post->slug }}</p>
                 <p>Creato il: {{ $post->created_at }}</p>

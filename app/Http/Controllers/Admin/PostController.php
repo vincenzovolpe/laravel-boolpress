@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller; // Devo aggiungere questo namespace per dirgli di usare il controller
@@ -31,7 +32,11 @@ class PostController extends Controller
     {
 
         $categories = Category::all();
-        return view('admin.posts.create', ['categories' => $categories]);
+        $tags = Tag::all();
+        return view('admin.posts.create',[
+            'categories' => $categories,
+            'tags' => $tags
+        ]);
     }
 
     /**
@@ -42,6 +47,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Recuoeri tutti i dati del form
         $dati = $request->all();
 
         //Creazione nome immagini e copia nella cartella images
@@ -49,16 +55,22 @@ class PostController extends Controller
         $file_image = time().'.'.$dati['image']->getClientOriginalName();
         // Sposto i file nella cartella public/images
         $request->image->move(public_path('images'), $file_image);
-
+        // Creo un nuovo oggetto posto
         $post = new Post();
 
         $post->slug = SlugService::createSlug(Post::class, 'slug', $dati['title']);
 
+        // Compilo tutti i dati compilabili in automatico
         $post->fill($dati);
 
         $post->image = $file_image;
 
         $post->save();
+
+        if(!empty($dati['tag_id'])) {
+            // sono stati selezionati dei tag => li assegno al post
+            $post->tags()->sync($dati['tag_id']);
+        }
 
         return redirect()->route('admin.posts.index');
     }
@@ -84,7 +96,12 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
+        $tags = Tag::all();
+        return view('admin.posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+            'tags' => $tags
+        ]);
     }
 
     /**
@@ -114,6 +131,12 @@ class PostController extends Controller
 
         $post->update($dati);
 
+
+        if(!empty($dati['tag_id'])) {
+            // sono stati selezionati dei tag => li assegno al post
+            $post->tags()->sync($dati['tag_id']);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -129,6 +152,12 @@ class PostController extends Controller
         if(\File::exists(public_path('images/'.$post->image))){
             \File::delete(public_path('images/'.$post->image));
         }
+
+        if($post->tags->isNotEmpty()) {
+            // Sincronizza un array vuoto, in modo da cancellare anche i vecchi post usando sync. In questo modo la delete funzione nonostante restrict present nel db
+            $post->tags()->sync([]);
+        }
+
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
