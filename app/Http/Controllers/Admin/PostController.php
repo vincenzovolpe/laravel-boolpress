@@ -152,7 +152,7 @@ class PostController extends Controller
             // sono stati selezionati dei tag => li assegno al post
             $post->tags()->sync($dati['tag_id']);
         } else {
-            // aggiorniamo i tag nel caso i cui non ci sono tag selezionati
+            // nel caso i cui salvo senza selezionare alcun tag
             $post->tags()->sync([]);
         }
 

@@ -42,7 +42,7 @@
                                 <td>{{ $post->author }}</td>
                                 <td class="text-right">
                                     <form class="" action="{{ route('admin.posts.destroy', ['post' => $post->id])}}" method="post">
-                                    <a class="btn btn-info" href="{{ route('admin.posts.show', ['post' => $post->id ]) }}">
+                                    <a class="btn btn-info" href="{{ route('admin.posts.show', $post) }}">
                                         Visualizza
                                     </a>
                                     <a class="btn btn-warning" href="{{ route('admin.posts.edit', ['post' => $post->id ]) }}">
