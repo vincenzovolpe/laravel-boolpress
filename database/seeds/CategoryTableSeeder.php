@@ -13,7 +13,7 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         // Mettiamo nella variabile l'array creato nel file tags.php creato nella cartella config
-        $categories = config( 'category.category_db');
+        $categories = config('category.category_db');
         foreach ($categories as $category) {
             // Creo un nuovo oggetto Category
             $nuova_category = new Category();
