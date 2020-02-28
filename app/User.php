@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // Quando ho parole composte uso il Camel Case
+    public function userDetail()
+    {
+        return $this->hasOne('App\UserDetail');
+    }
 }
