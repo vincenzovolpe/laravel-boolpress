@@ -8,7 +8,7 @@
 
                 <div class="col-xl-8 offset-xl-2 py-5">
 
-                    <h1>Contattaci</h1>
+                    <h1>{{__('messages.contact_us')}}</h1>
 
                     <form action="{{ route('contatti.store') }}" method="post">
                         @csrf
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-success btn-send" value="Invia Messaggio">
+                                    <input type="submit" class="btn btn-success btn-send" value="{{Invia Messaggio}}">
                                 </div>
                             </div>
                             <div class="row">
