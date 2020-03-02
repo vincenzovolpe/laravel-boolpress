@@ -8,7 +8,7 @@
 
                 <div class="col-xl-8 offset-xl-2 py-5">
 
-                    <h1>{{__('messages.contact_us')}}</h1>
+                    {{-- <h1>{{__('messages.contact_us')}}</h1> --}}
 
                     <form action="{{ route('contatti.store') }}" method="post">
                         @csrf

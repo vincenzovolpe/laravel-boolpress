@@ -25,7 +25,7 @@
                     <a class="nav-link" href="#">Cosa facciamo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::currentRouteName() == 'contatti' ? 'active' : ""}}" href="{{ route('contatti.show') }}">Contatti</a>
+                    <a class="nav-link" href="{{ route('contatti.show') }}">Contatti</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Lingua <span class="caret"></span></a>

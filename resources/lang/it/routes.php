@@ -3,5 +3,5 @@
 return [
 
         'contact' => 'contattaci',
-        'thankyou' = > 'grazie'
+        'thankyou' => 'grazie'
 ];
