@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-success btn-send" value="{{Invia Messaggio}}">
+                                    <input type="submit" class="btn btn-success btn-send" value="Invia Messaggio">
                                 </div>
                             </div>
                             <div class="row">
