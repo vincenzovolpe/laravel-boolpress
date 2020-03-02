@@ -33,7 +33,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    {{ $properties['native'] }}
+                                    {{ $properties['native'] }} <img src="{{ $properties['img'] }}" alt="Italiano">
                                 </a>
                         @endforeach
                     </div>
